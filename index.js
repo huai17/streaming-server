@@ -8,9 +8,8 @@ const app = express();
 // middlewares
 app.use(cors());
 
-const { checkBroadcastToken, checkWatchToken } = require("./src/utils/jwt");
+const { checkBroadcastToken } = require("./src/utils/jwt");
 app.get("/broadcast", checkBroadcastToken);
-app.use("/hls/:token", checkWatchToken, express.static("/tmp/hls"));
 
 // health check
 app.get("/", (req, res) => {

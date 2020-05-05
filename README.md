@@ -6,7 +6,136 @@ Work with nginx rtmp server.
 
 The installations are for Ubuntu.
 
-### ffmpeg
+Install dependencies:
+
+```bash
+sudo apt-get update -qq && sudo apt-get -y install \
+  git \
+  wget
+
+```
+
+### nodejs
+
+Install nvm.
+
+```bash
+cd ~ && \
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+```
+
+Install node.
+
+```bash
+nvm install node
+
+```
+
+Install pm2 & yarn.
+
+```bash
+npm install pm2 -g
+npm install yarn -g
+
+```
+
+Download auth-streaming server code & install dependencies.
+
+```bash
+cd ~ && \
+git clone https://github.com/huai17/auth-streaming.git && \
+cd ~/auth-streaming && \
+yarn install
+```
+
+Create `.env` file with content" `SECRET=put_your_secret_here`.
+
+```bash
+cd ~/auth-streaming && \
+nano .env
+
+```
+
+Start auth-streaming server.
+
+```bash
+cd ~/auth-streaming && \
+pm2 start index.js
+
+```
+
+### nginx-rtmp
+
+Install dependencies.
+
+```bash
+sudo apt-get update -qq && sudo apt-get -y install \
+  build-essential \
+  libpcre3 \
+  libpcre3-dev \
+  libssl-dev \
+  zlib1g-dev
+
+```
+
+Prepare workspace.
+
+```bash
+sudo mkdir ~/nginx_sources
+
+```
+
+Download nginx-rtmp.
+
+```bash
+cd ~/nginx_sources && \
+sudo git clone git://github.com/arut/nginx-rtmp-module.git
+
+```
+
+Download nginx.
+
+```bash
+cd ~/nginx_sources && \
+sudo wget https://nginx.org/download/nginx-1.16.1.tar.gz && \
+sudo tar zxf nginx-1.16.1.tar.gz
+
+```
+
+Build nginx.
+
+```bash
+cd ~/nginx_sources/nginx-1.16.1 && \
+sudo ./configure --with-http_ssl_module --with-http_secure_link_module --add-module=../nginx-rtmp-module && \
+sudo make && \
+sudo make install
+
+```
+
+Setup nginx config. Make sure you already download auth-streaming server.
+
+```bash
+sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf
+
+```
+
+Start nginx server.
+
+```bash
+sudo /usr/local/nginx/sbin/nginx
+
+```
+
+To restart nginx server.
+
+```bash
+sudo /usr/local/nginx/sbin/nginx -s stop
+sudo /usr/local/nginx/sbin/nginx
+
+```
+
+<!-- ### ffmpeg
 
 Install dependencies.
 
@@ -107,115 +236,4 @@ Move ffmpeg to root user.
 ```bash
 sudo cp ~/bin/* /usr/bin/
 
-```
-
-### nodejs
-
-Install nvm.
-
-```bash
-cd ~ && \
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-
-```
-
-Install node.
-
-```bash
-nvm install node
-
-```
-
-Install pm2.
-
-```bash
-npm install pm2 -g
-
-```
-
-Download auth-streaming server code.
-
-```bash
-cd ~ && \
-git clone https://github.com/huai17/auth-streaming.git
-
-```
-
-Start auth-streaming server.
-
-```bash
-cd ~/auth-streaming && \
-pm2 start index.js
-
-```
-
-### nginx-rtmp
-
-Install dependencies.
-
-```bash
-sudo apt-get update -qq && sudo apt-get -y install \
-  build-essential \
-  libpcre3 \
-  libpcre3-dev \
-  libssl-dev \
-  zlib1g-dev
-
-```
-
-Prepare workspace.
-
-```bash
-sudo mkdir ~/nginx_sources
-
-```
-
-Download nginx-rtmp.
-
-```bash
-cd ~/nginx_sources && \
-sudo git clone git://github.com/arut/nginx-rtmp-module.git
-
-```
-
-Download nginx.
-
-```bash
-cd ~/nginx_sources && \
-sudo wget https://nginx.org/download/nginx-1.16.1.tar.gz && \
-sudo tar zxf nginx-1.16.1.tar.gz
-
-```
-
-Build nginx.
-
-```bash
-cd ~/nginx_sources/nginx-1.16.1 && \
-sudo ./configure --with-http_ssl_module --add-module=../nginx-rtmp-module && \
-sudo make && \
-sudo make install
-
-```
-
-Setup nginx config. Make sure you already download auth-streaming server.
-
-```bash
-sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf && \
-sudo cp ~/auth-streaming/transcode.sh /opt/transcode.sh
-
-```
-
-Start nginx server.
-
-```bash
-sudo /usr/local/nginx/sbin/nginx
-
-```
-
-To restart nginx server.
-
-```bash
-sudo /usr/local/nginx/sbin/nginx -s stop
-sudo /usr/local/nginx/sbin/nginx
-
-```
+``` -->

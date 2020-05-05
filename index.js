@@ -8,7 +8,7 @@ const app = express();
 // middlewares
 app.use(cors());
 
-const { checkBroadcastToken } = require("./src/utils/jwt");
+const { checkBroadcastToken } = require("./src/utils/streamToken");
 app.get("/broadcast", checkBroadcastToken);
 
 // health check

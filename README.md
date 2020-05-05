@@ -195,7 +195,7 @@ sudo make install
 Setup nginx config. Make sure you already download auth-streaming server.
 
 ```bash
-sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf
+sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 sudo cp ~/auth-streaming/transcode.sh /opt/transcode.sh
 
 ```

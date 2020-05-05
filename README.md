@@ -19,8 +19,14 @@ sudo apt-get update -qq && sudo apt-get -y install \
   git \
   libass-dev \
   libfreetype6-dev \
+  libsdl2-dev \
   libtool \
+  libva-dev \
+  libvdpau-dev \
   libvorbis-dev \
+  libxcb1-dev \
+  libxcb-shm0-dev \
+  libxcb-xfixes0-dev \
   pkg-config \
   texinfo \
   wget \
@@ -99,7 +105,7 @@ hash -r
 Move ffmpeg to root user.
 
 ```bash
-cp ~bin/* /usr/bin/
+sudo cp ~/bin/* /usr/bin/
 
 ```
 

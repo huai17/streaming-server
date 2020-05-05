@@ -21,7 +21,8 @@ Install nvm.
 
 ```bash
 cd ~ && \
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash && \
+source ~/.profile
 
 ```
 
@@ -35,8 +36,7 @@ nvm install node
 Install pm2 & yarn.
 
 ```bash
-npm install pm2 -g
-npm install yarn -g
+npm install -g pm2 yarn
 
 ```
 
@@ -47,6 +47,7 @@ cd ~ && \
 git clone https://github.com/huai17/auth-streaming.git && \
 cd ~/auth-streaming && \
 yarn install
+
 ```
 
 Create `.env` file with content" `SECRET=put_your_secret_here`.
@@ -79,16 +80,10 @@ sudo apt-get update -qq && sudo apt-get -y install \
 
 ```
 
-Prepare workspace.
-
-```bash
-sudo mkdir ~/nginx_sources
-
-```
-
 Download nginx-rtmp.
 
 ```bash
+sudo mkdir ~/nginx_sources && \
 cd ~/nginx_sources && \
 sudo git clone git://github.com/arut/nginx-rtmp-module.git
 
@@ -113,10 +108,11 @@ sudo make install
 
 ```
 
-Setup nginx config. Make sure you already download auth-streaming server.
+Setup nginx config and change the secret. Make sure you already download auth-streaming server.
 
 ```bash
-sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf
+sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf && \
+sudo nano /usr/local/nginx/conf/nginx.conf
 
 ```
 

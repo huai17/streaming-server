@@ -10,7 +10,7 @@ const checkBroadcastToken = (req, res) => {
   const timestamp = Math.floor(new Date().getTime() / 1000);
   if (timestamp > exp) return res.sendStatus(404);
 
-  const input = exp + " " + name + " " + SECRET;
+  const input = exp + " " + name + " broadcast " + SECRET;
   const binaryHash = crypto.createHash("md5").update(input).digest();
   const base64Value = new Buffer(binaryHash).toString("base64");
   const code = base64Value

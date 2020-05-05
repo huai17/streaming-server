@@ -18,6 +18,8 @@ const checkBroadcastToken = (req, res) => {
     .replace(/\+/g, "-")
     .replace(/\//g, "_");
 
+  console.log("id: ", name, "token: ", token, "exp: ", exp, "code: ", code);
+
   if (code !== token) return res.sendStatus(404);
 
   res.sendStatus(200);

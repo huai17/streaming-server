@@ -21,26 +21,26 @@ height=${height_with_prefix#${height_prefix}}
 
 if [ "${height}" -lt 1441 ] && [ "${height}" -gt 1080 ]; then
   ffmpeg -i rtmp://127.0.0.1/$1/$2 -async 1 -vsync -1 \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_360p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_480p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 1500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:720" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_720p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 3000K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:1080" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_1080p \
-    -c copy -f flv rtmp://localhost/hls/$name_src &
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_360p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_480p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 1500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:720" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_720p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 3000K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:1080" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_1080p \
+    -c copy -f flv rtmp://127.0.0.1/hls/$name_src &
 elif [ "${height}" -lt 1081 ] && [ "${height}" -gt 720 ]; then
   ffmpeg -i rtmp://127.0.0.1/$1/$2 -async 1 -vsync -1 \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_360p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_480p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 1500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:720" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_720p \
-    -c copy -f flv rtmp://localhost/hls/$name_src &
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_360p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_480p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 1500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:720" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_720p \
+    -c copy -f flv rtmp://127.0.0.1/hls/$name_src &
 elif [ "${height}" -lt 721 ] && [ "${height}" -gt 480 ]; then
   ffmpeg -i rtmp://127.0.0.1/$1/$2 -async 1 -vsync -1 \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_360p \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_480p \
-    -c copy -f flv rtmp://localhost/hls/$name_src &
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_360p \
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 500K -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:480" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_480p \
+    -c copy -f flv rtmp://127.0.0.1/hls/$name_src &
 elif [ "${height}" -lt 481 ] && [ "${height}" -gt 300 ]; then
   ffmpeg -i rtmp://127.0.0.1/$1/$2 -async 1 -vsync -1 \
-    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://localhost/hls/$name_360p \
-    -c copy -f flv rtmp://localhost/hls/$name_src &
+    -c:v libx264 -x264opts keyint=24:no-scenecut -c:a aac -max_muxing_queue_size 4000 -r 30 -b:v 400k -profile:v high -b:a 128k -vf "trunc(oh*a/2)*2:360" -tune zerolatency -preset veryfast -crf 23 -f flv rtmp://127.0.0.1/hls/$name_360p \
+    -c copy -f flv rtmp://127.0.0.1/hls/$name_src &
 else
   echo "not working"
 fi

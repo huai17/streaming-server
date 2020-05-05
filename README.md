@@ -182,9 +182,8 @@ Download nginx.
 
 ```bash
 cd ~/nginx_sources && \
-wget https://nginx.org/download/nginx-1.16.1.tar.gz && \
-tar zxf nginx-1.16.1.tar.gz
-
+sudo wget https://nginx.org/download/nginx-1.16.1.tar.gz && \
+sudo tar zxf nginx-1.16.1.tar.gz
 
 ```
 

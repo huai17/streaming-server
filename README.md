@@ -40,12 +40,12 @@ npm install -g pm2 yarn
 
 ```
 
-Download auth-streaming server code & install dependencies.
+Download streaming-server code & install dependencies.
 
 ```bash
 cd ~ && \
-git clone https://github.com/huai17/auth-streaming.git && \
-cd ~/auth-streaming && \
+git clone https://github.com/huai17/streaming-server.git && \
+cd ~/streaming-server && \
 yarn install
 
 ```
@@ -53,15 +53,15 @@ yarn install
 Create `.env` file with content" `SECRET=put_your_secret_here`.
 
 ```bash
-cd ~/auth-streaming && \
+cd ~/streaming-server && \
 nano .env
 
 ```
 
-Start auth-streaming server.
+Start streaming-server server.
 
 ```bash
-cd ~/auth-streaming && \
+cd ~/streaming-server && \
 pm2 start index.js
 
 ```
@@ -108,10 +108,10 @@ sudo make install
 
 ```
 
-Setup nginx config and change the secret. Make sure you already download auth-streaming server.
+Setup nginx config and change the secret. Make sure you already download streaming-server.
 
 ```bash
-sudo cp ~/auth-streaming/nginx.conf /usr/local/nginx/conf/nginx.conf && \
+sudo cp ~/streaming-server/nginx.conf /usr/local/nginx/conf/nginx.conf && \
 sudo nano /usr/local/nginx/conf/nginx.conf
 
 ```

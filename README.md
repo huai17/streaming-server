@@ -1,6 +1,6 @@
-# auth-streaming
+# Streaming Server
 
-Work with nginx rtmp server.
+Nginx rtmp server streaming HLS. Athenticated with node js server.
 
 ## Installations
 
